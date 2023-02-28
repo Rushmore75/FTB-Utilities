@@ -2,7 +2,7 @@ Trying to make this work in 2023
 
 # Changes
 ### (unordered)
-- [x] Dependencies actually work now.
+- [x] Dependencies actually work now. (this took 11 hrs because *someone* discontinued their maven repo with no mirrors)
 - [ ] Gradle 5+
 - [ ] Discord Integration
 
