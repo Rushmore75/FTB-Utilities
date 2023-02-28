@@ -1,7 +1,11 @@
 buildscript {
 	repositories {
-		jcenter()
-		maven { url = "http://files.minecraftforge.net/maven" }
+		mavenCentral()
+		// maven { url = "http://files.minecraftforge.net/maven" }
+		maven {
+			url = "http://files.minecraftforge.net/maven"
+			// allowInsecureProtocol = true
+		}
 		maven { url "https://plugins.gradle.org/m2/" }
 	}
 	dependencies {
@@ -41,18 +45,47 @@ configurations.all {
 	transitive = false
 }
 
+// sourceControl {
+// 	gitRepository("https://github.com/Rushmore75/FTB-Library-Legacy.git") {
+// 		producesModule("com.feed_the_beast.mods:FTBLib")
+// 	}
+// }
+
 repositories {
 	mavenLocal()
-	maven { url "https://maven.latmod.com/" } //FTB Library, KubeJS, Aurora
+	// maven { url 'https://jitpack.io' }
+		// ====================
+	// 			JEI
+	// ====================
+  	maven {
+  	  // location of the maven that hosts JEI files
+  	  name = "Progwml6 maven"
+  	  url = "https://dvs1.progwml6.com/files/maven/"
+  	}
+  	maven {
+  	  // location of a maven mirror for JEI files, as a fallback
+  	  name = "ModMaven"
+  	  url = "https://modmaven.dev"
+  	}
 }
 
 dependencies {
-	deobfCompile "com.feed_the_beast.mods:FTBLib:${ftblib_version}"
-	deobfProvided "dev.latvian.kubejs:KubeJS:forge-1.12.2-${kubejs_version}"
-	deobfCompile "dev.latvian.mods:Aurora:1.+"
-	deobfProvided curse.resolve('ichunutil', project.ichunutil_file)
-	deobfProvided curse.resolve('journeymap', project.journeymap_file)
-	deobfProvided curse.resolve('chisels-bits', project.chiselsandbits_file)
+	// this would be for a newer version of gradle, 4.10 or higher where I could use "sourceControl"	
+	// implementation "com.feed_the_beast.mods:FTBLib:5.4.7.0"
+	provided files("/home/oliver/Documents/code_projects/java/FTB-Library-Legacy/build/libs/FTBLib-5.4.7.0.jar")
+	provided files("/home/oliver/Documents/code_projects/java/KubeJS/build/libs/KubeJS-forge-1.12.2-1.1.0.custom.jar")
+	provided files("/home/oliver/Documents/code_projects/java/Aurora/build/libs/Aurora-1.0.0.custom.jar")
+
+	// deobfProvided curse.resolve('ichunutil', project.ichunutil_file)
+	provided files("/home/oliver/Documents/code_projects/java/FTB-Utilities/lib/iChunUtil-1.12.2-7.2.2.jar")
+	// deobfProvided curse.resolve('journeymap', project.journeymap_file)
+	deobfProvided "mezz.jei:jei_${mc_version}:${jei_version}:api"
+	// deobfProvided curse.resolve('chisels-bits', project.chiselsandbits_file)
+	provided files("/home/oliver/Documents/code_projects/java/FTB-Utilities/lib/chiselsandbits-14.33.jar")
+	
+	implementation 'org.apache.logging.log4j:log4j-api:2.20.0'
+  	implementation 'org.apache.logging.log4j:log4j-core:2.20.0'
+
 }
 
 processResources {
