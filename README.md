@@ -1,5 +1,15 @@
 Trying to make this work in 2023
 
-# FTB Utilities [![](http://cf.way2muchnoise.eu/ftb-utilities-forge.svg) ![](https://cf.way2muchnoise.eu/packs/ftb-utilities-forge.svg) ![](http://cf.way2muchnoise.eu/versions/ftb-utilities-forge.svg)](https://www.curseforge.com/minecraft/mc-mods/ftb-utilities-forge)
+# Changes
+### (unordered)
+[X] Dependencies actually work now.
+[] Gradle 5+
+[] Discord Integration
 
-Use https://github.com/FTBTeam/FTB-Mods-Issues for any mod issues << Like they would support you... lol it's 1.12
+# What?
+I'm resurrecting this mod for a custom modpack use case. It has (thus far) required me to build several of the dependencies from source, many of them are from forks on this account.
+
+Such as:
+* [FTBLib](https://github.com/Rushmore75/FTB-Library-Legacy)
+* [KubeJS](https://github.com/Rushmore75/KubeJS)
+* [Aurora](https://github.com/Rushmore75/Aurora)
